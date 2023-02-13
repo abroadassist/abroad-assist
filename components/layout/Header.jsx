@@ -2,29 +2,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+const pages = [
+  {
+    label: "Home",
+    path: "/",
+  },
+  {
+    label: "Our Services",
+    path: "/our-services",
+  },
+  {
+    label: "About Us",
+    path: "/about",
+  },
+  {
+    label: "Contact Us",
+    path: "/contact",
+  },
+];
 const Header = ({}) => {
-  const pages = [
-    {
-      label: "Home",
-      path: "/",
-    },
-    {
-      label: "Our Services",
-      path: "/our-services",
-    },
-    {
-      label: "About Us",
-      path: "/about",
-    },
-    {
-      label: "Contact Us",
-      path: "/contact",
-    },
-  ];
-
   const router = useRouter();
-
-  console.log(router);
 
   return (
     <header className="m-0">
