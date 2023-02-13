@@ -43,7 +43,7 @@ const Header = ({}) => {
                   <span
                     key={"nav-link-" + index}
                     className={`m-1 p-2 font-semibold hover:bg-slate-200 rounded-md transition-colors duration-300 ease-in-out ${
-                      isCurrentPage ? "bg-slate-300" : ""
+                      isCurrentPage ? "bg-slate-300 text-aa-outer" : ""
                     }`}
                   >
                     {page.label}
