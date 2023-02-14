@@ -24,7 +24,7 @@ const Header = ({}) => {
   const router = useRouter();
 
   return (
-    <header className="m-0">
+    <header className="m-0 shadow-lg">
       <nav className="sm:container sm:mx-auto py-4 px-3">
         <div className=" flex flex-row justify-between items-center">
           <Link href="/">
@@ -42,8 +42,8 @@ const Header = ({}) => {
                 <Link href={page.path}>
                   <span
                     key={"nav-link-" + index}
-                    className={`m-1 p-2 font-semibold hover:bg-slate-200 rounded-md transition-colors duration-300 ease-in-out ${
-                      isCurrentPage ? "bg-slate-300 text-aa-outer" : ""
+                    className={`m-1 py-3 px-6 capitalize text-lg font-semibold hover:bg-slate-200 rounded-md transition-colors duration-300 ease-in-out shadow-none ${
+                      isCurrentPage ? "bg-slate-300 text-aa-outer shadow" : ""
                     }`}
                   >
                     {page.label}
