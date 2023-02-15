@@ -41,9 +41,12 @@ const Header = ({}) => {
               {pages.map((page, index) => {
                 const isCurrentPage = router?.pathname === page.path;
                 return (
-                  <Link href={page.path} className="sm:m-1 my-3 mx-auto">
+                  <Link
+                    key={"nav-link-" + index}
+                    href={page.path}
+                    className="sm:m-1 my-3 mx-auto"
+                  >
                     <span
-                      key={"nav-link-" + index}
                       className={`py-3 px-6 capitalize text-lg font-semibold hover:bg-slate-200 rounded-md transition-colors duration-300 ease-in-out shadow-none ${
                         isCurrentPage ? "bg-slate-300 text-aa-outer shadow" : ""
                       }`}

@@ -138,6 +138,7 @@ const Home = () => {
               <Link
                 href={service.path}
                 className="bg-slate-100 shadow p-4 rounded-md"
+                key={`home-service-${index}`}
               >
                 <div
                   key={`service-${index}`}
@@ -199,8 +200,8 @@ const Home = () => {
         {testimonials.map((testimonial, index) => {
           return (
             <Testimonial
+              key={`testimonial-${index}`}
               {...{
-                key: `testimonial-${index}`,
                 comment: testimonial.comment,
                 fullname: testimonial.fullname,
                 title: testimonial.title,
