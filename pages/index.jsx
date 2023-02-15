@@ -8,6 +8,8 @@ import LayoutWrapper from "components/layout/LayoutWrapper";
 import Container from "components/wrappers/Container";
 import SectionWrapper from "components/wrappers/SectionWrapper";
 import Testimonial from "components/Testimonial";
+import ImageSection from "components/ImageSection";
+import CTASection from "components/CTASection";
 
 // assets & styles
 import BannerImage from "assets/images/home-banner-image.png";
@@ -166,34 +168,23 @@ const Home = () => {
 
       {/* About Us section - start */}
       <Container classes={`mb-12 py-10 px-8`}>
-        <div className="flex">
-          <div className="flex-1 text-slate-700 px-4">
-            <h2 className="font-bold text-4xl py-2 pb-8 text-slate-700 ">
-              About Us
-            </h2>
-            <p className="my-2">
-              Abroad Assist is a premier writing services agency providing
-              expert help to abroad aspirants.
-            </p>
-            <p className="my-2">
-              Led by a doctor-turned-health administration professional and an
-              engineer-turned-writer working to fuel your abroad dreams, at the
-              end of the day, our goal is not profiteering, but ensuring that
-              you receive satisfactory work without having to shell out a
-              fortune.
-            </p>
-          </div>
-          <div className="flex-1 p-5">
-            <Image
-              alt="About Abroad Assist"
-              src={abroadImage}
-              width={540}
-              height={360}
-              loading="lazy"
-              className="rounded-lg"
-            />
-          </div>
-        </div>
+        <ImageSection
+          {...{
+            imageSrc: abroadImage,
+            sectionTitle: "About Us",
+          }}
+        >
+          <p className="my-2">
+            Abroad Assist is a premier writing services agency providing expert
+            help to abroad aspirants.
+          </p>
+          <p className="my-2">
+            Led by a doctor-turned-health administration professional and an
+            engineer-turned-writer working to fuel your abroad dreams, at the
+            end of the day, our goal is not profiteering, but ensuring that you
+            receive satisfactory work without having to shell out a fortune.
+          </p>
+        </ImageSection>
       </Container>
       {/* About Us section - end */}
 
@@ -221,25 +212,15 @@ const Home = () => {
       {/* Testimonials section - end */}
 
       {/* CTA section - start */}
-      <div className="bg-aa-inner">
-        <Container classes={`text-center pt-10 pb-16 px-8`}>
-          <h4 className="uppercase font-bold py-3 tracking-widest text-slate-300">
-            REACH OUT TO US TODAY
-          </h4>
-          <h2 className="font-bold text-2xl py-2 text-white mb-8">
-            Let us supercharge your academic prospects and help you pursue an
-            advanced program of your choice.
-          </h2>
-          <Link href="/contact">
-            <button
-              role="link"
-              className="mr-4  py-3 px-6 rounded-full font-semibold border shadow bg-slate-100 text-slate-900 hover:bg-transparent hover:text-slate-100"
-            >
-              Contact Us
-            </button>
-          </Link>
-        </Container>
-      </div>
+      <CTASection
+        {...{
+          heading:
+            "Let us supercharge your academic prospects and help you pursue an advanced program of your choice.",
+          subheading: "REACH OUT TO US TODAY",
+          path: "/contact",
+          buttonText: "Contact Us",
+        }}
+      />
       {/* CTA section - end */}
     </LayoutWrapper>
   );
