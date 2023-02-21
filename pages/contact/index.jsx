@@ -8,6 +8,7 @@ import phoneIcon from "assets/icons/phone-solid.svg";
 import emailIcon from "assets/icons/at-solid.svg";
 import whatsappIcon from "assets/icons/whatsapp.svg";
 import instagramIcon from "assets/icons/instagram.svg";
+import ContactForm from "components/forms/ContactForm";
 
 const contacts = [
   {
@@ -60,7 +61,10 @@ const ContactUs = () => {
               <div className="my-3">
                 {contacts.map((contact) => {
                   return (
-                    <div className="flex gap-3 my-4" key={`contact-${contact.title}`}>
+                    <div
+                      className="flex gap-3 my-4"
+                      key={`contact-${contact.title}`}
+                    >
                       <ContactIcon
                         {...{
                           src: contact.icon,
@@ -105,13 +109,14 @@ const ContactUs = () => {
               </div>
             </div>
           </div>
-          <div className="flex-1 p-4 ">
+          <div className="flex-1 p-4 border-l">
             <Heading
               {...{
                 title: "HAVE SOME QUESTIONS FOR US?",
                 heading: "Fill the Form",
               }}
             />
+            <ContactForm />
           </div>
         </div>
       </Container>
@@ -140,7 +145,11 @@ const Heading = ({ title, heading }) => (
 );
 
 const ContactIcon = ({ link, src, alt = "contact", sizeInPx = 24 }) => (
-  <a href={link} target="_blank" className="rounded-full bg-[#e8eefc] p-4 hover:animate-pulse hover:shadow-md">
+  <a
+    href={link}
+    target="_blank"
+    className="rounded-full bg-[#e8eefc] p-4 hover:animate-pulse hover:shadow-md"
+  >
     <Image
       {...{
         src,
