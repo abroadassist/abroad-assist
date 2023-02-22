@@ -1,6 +1,7 @@
 import LandingPage from "components/landing-page";
 import LayoutWrapper from "components/layout/LayoutWrapper";
-import planeIcon from "assets/icons/paper-plane-solid.svg";
+import { FaStar, FaHeadset } from "react-icons/fa";
+import { FiFileText } from "react-icons/fi";
 
 const paragraphs = [
   {
@@ -19,21 +20,21 @@ const featureCards = [
     title: "Plagiarism-Free Materials",
     details:
       "We provide 100% unique & plagiarism-free Visa SOP to improve your approval chances.",
-    icon: planeIcon,
+    icon: <FiFileText className="mr-2" size={42} />,
   },
   {
     id: 2,
     title: "Top-Notch Writing",
     details:
       "With a combined experience of 20+ years, our team produces writing of top-tier quality-giving you nothing but the best value for your money.",
-    icon: planeIcon,
+    icon: <FaStar className="mr-2" size={42} />,
   },
   {
     id: 3,
     title: "Dedicated Customer Service",
     details:
       "We hear your needs and stay in touch throughout the entire process.",
-    icon: planeIcon,
+    icon: <FaHeadset className="mr-2" size={42} />,
   },
 ];
 

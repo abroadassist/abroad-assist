@@ -1,11 +1,16 @@
-import Image from "next/image";
 import React, { useMemo, useRef } from "react";
 import Container from "components/wrappers/Container";
 
 // assets
-import planeIcon from "assets/icons/paper-plane-solid.svg";
 import ContactForm from "components/forms/ContactForm";
 import { useRouter } from "next/router";
+import {
+  FaArrowRight,
+  FaFileAlt,
+  FaPaperPlane,
+  FaPhone,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 const LandingPage = ({
   heading = "Welcome Aboard!",
@@ -69,23 +74,11 @@ const LandingPage = ({
             })}
           </div>
 
-          {/* TODO scroll to form */}
           <button
-            className="flex flex-row mx-auto p-3 px-6 bg-[#debe26] text-2xl font-bold hover:animate-bounce rounded-lg shadow hover:shadow-lg"
+            className="flex flex-row items-center mx-auto p-3 px-6 bg-[#debe26] text-2xl font-bold hover:animate-bounce rounded-lg shadow hover:shadow-lg"
             onClick={scrollToForm}
           >
-            Get in Touch
-            {/* TODO Icon here (plane icon) */}
-            {/* <Image
-              {...{
-                src: planeIcon,
-                width: 24,
-                height: 24,
-                loading: "lazy",
-                alt: "Send",
-                className: "ml-3 stroke-white",
-              }}
-            /> */}
+            <FaPaperPlane className="mr-2" /> Get in Touch
           </button>
           {/* get in touch button */}
         </Container>
@@ -102,7 +95,7 @@ const LandingPage = ({
                 className="p-4 flex-1 rounded-lg bg-aa-inner shadow text-white text-center"
               >
                 <div className="border h-full border-white rounded-lg bg-aa-inner p-4">
-                  <div className="mx-auto">{/* TODO ICON here */}</div>
+                  <div className="flex justify-center mb-2">{feature.icon}</div>
                   <h4 className="text-2xl font-bold">{feature.title}</h4>
                   <p className="mt-4 text-lg">{feature.details}</p>
                 </div>
@@ -121,14 +114,19 @@ const LandingPage = ({
           <div className="flex">
             <div className="mx-auto">
               {services.map((service) => (
-                <div key={`service-${service.id}`} className="ml-8 my-4">
-                  <span className="mr-4">ICON</span>
+                <div
+                  key={`service-${service.id}`}
+                  className="ml-8 my-4 flex items-center"
+                >
+                  <span className="mr-4">
+                    <FaFileAlt className="mr-2 text-[#DEBE26]" size={24} />
+                  </span>
                   <span className="font-serif text-lg text-aa-inner">
                     {service.description}
                   </span>
                 </div>
               ))}
-              <div className="flex flex-col lg:flex-row">
+              <div className="flex flex-col lg:flex-row justify-center">
                 <a
                   href={`https://wa.me/919949883658?text=${message?.whatsappMessage}`}
                   target="_blank"
@@ -136,17 +134,17 @@ const LandingPage = ({
                 >
                   <button
                     role="link"
-                    className="p-2 px-4 m-2 mx-auto lg:mx-2 w-36 bg-[#25d366] text-white font-semibold rounded "
+                    className="flex items-center justify-center p-2 px-4 m-2 mx-auto lg:mx-2 w-36 bg-[#25d366] text-white font-semibold rounded "
                   >
-                    WhatsApp
+                    <FaWhatsapp className="mr-2" size={24} /> WhatsApp
                   </button>
                 </a>
-                <a href={"tel:+919949883658"} className="flex" target="_blank">
+                <a href={"tel:+919949883658"} className="" target="_blank">
                   <button
                     role="link"
-                    className="p-2 px-4 m-2 mx-auto lg:mx-2 w-36 bg-[#1e498a] text-white font-semibold rounded "
+                    className="flex items-center justify-center p-2 px-4 m-2 mx-auto lg:mx-2 w-36 bg-[#1e498a] text-white font-semibold rounded "
                   >
-                    Call
+                    <FaPhone className="mr-2" /> Call
                   </button>
                 </a>
               </div>
@@ -154,7 +152,7 @@ const LandingPage = ({
           </div>
           {/* service list */}
         </div>
-        <div className="flex-1 p-4 border-l">
+        <div className="flex-1 p-4 lg:border-l">
           <h2
             className="font-bold text-6xl text-center py-2 mb-5 text-aa-outer "
             ref={formRef}
@@ -162,7 +160,7 @@ const LandingPage = ({
             Get a Callback
           </h2>
           <div className="flex">
-            <div className="mx-auto">{contactForm}</div>
+            <div className="mx-12 flex-grow">{contactForm}</div>
           </div>
         </div>
       </Container>
@@ -196,9 +194,12 @@ const LandingPage = ({
             Our Track Record
           </h2>
           <hr className="mt-4 mb-8 w-1/3 mx-auto" />
-          <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-wrap justify-evenly">
             {stats.map((stat) => (
-              <div key={stat.order} className="p-5 text-center">
+              <div
+                key={stat.order}
+                className="basis-full md:basis-1/2 lg:basis-1/4 p-5 text-center"
+              >
                 <h3 className="text-5xl text-white font-bold mb-3">
                   {new Intl.NumberFormat("en-US").format(stat.number)}+
                 </h3>
@@ -224,9 +225,11 @@ const LandingPage = ({
                 {featureList.map((featureListItem) => (
                   <div
                     key={`feature-list-item-${featureListItem.id}`}
-                    className="ml-8 my-4"
+                    className="ml-8 my-4 flex items-center"
                   >
-                    <span className="mr-4">ICON</span>
+                    <span className="mr-4">
+                      <FaArrowRight className="mr-2 " size={24} />
+                    </span>
                     <span className="font-serif text-lg text-aa-inner">
                       {featureListItem.description}
                     </span>
@@ -242,21 +245,10 @@ const LandingPage = ({
       {/* get in touch button */}
       <div className="mb-20 mt-4">
         <button
-          className="flex flex-row mx-auto p-3 px-6 bg-aa-outer text-white text-2xl font-bold hover:animate-bounce rounded-lg shadow hover:shadow-lg"
+          className="flex flex-row items-center mx-auto p-3 px-6 bg-aa-outer text-white text-2xl font-bold hover:animate-bounce rounded-lg shadow hover:shadow-lg"
           onClick={scrollToForm}
         >
-          Get in Touch
-          {/* TODO Icon here (plane icon) */}
-          {/* <Image
-              {...{
-								src: planeIcon,
-                width: 24,
-                height: 24,
-                loading: "lazy",
-                alt: "Send",
-                className: "ml-3 stroke-white",
-              }}
-            /> */}
+          <FaPaperPlane className="mr-2" /> Get in Touch
         </button>
       </div>
       {/* testimonials? */}

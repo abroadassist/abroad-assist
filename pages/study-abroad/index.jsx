@@ -1,6 +1,7 @@
 import LandingPage from "components/landing-page";
 import LayoutWrapper from "components/layout/LayoutWrapper";
-import planeIcon from "assets/icons/paper-plane-solid.svg";
+import { FaStar, FaUniversity } from "react-icons/fa";
+import { FiFileText } from "react-icons/fi";
 
 const paragraphs = [
   {
@@ -15,21 +16,21 @@ const featureCards = [
     title: "Plagiarism-Free Materials",
     details:
       "We provide 100% unique & plagiarism-free SOPs, LORs, & Admission Essays to boost your admission prospects.",
-    icon: planeIcon,
+    icon: <FiFileText className="mr-2" size={42} />,
   },
   {
     id: 2,
     title: "Top-Notch Writing",
     details:
       "With a combined experience of 20+ years, our team produces writing of top-tier quality–giving you nothing but the best value for your money.",
-    icon: planeIcon,
+    icon: <FaStar className="mr-2" size={42} />,
   },
   {
     id: 3,
     title: "Customised to University Requirements",
     details:
       "Each SOP & Admission Essay is customized to the university you apply for.",
-    icon: planeIcon,
+    icon: <FaUniversity className="mr-2" size={42} />,
   },
 ];
 
