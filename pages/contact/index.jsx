@@ -109,7 +109,7 @@ const ContactUs = () => {
               </div>
             </div>
           </div>
-          <div className="flex-1 p-4 border-l">
+          <div className="flex-1 p-4 lg:border-l">
             <Heading
               {...{
                 title: "HAVE SOME QUESTIONS FOR US?",

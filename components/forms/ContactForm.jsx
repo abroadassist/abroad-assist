@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Formik } from "formik";
 import FormInputWrapper from "components/wrappers/FormInputWrapper";
 import * as Yup from "yup";
@@ -6,6 +6,9 @@ import { FaPaperPlane } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
 import "react-phone-input-2/lib/style.css";
 import { notify } from "api/notify";
+import PhoneIntl from "./inputs/PhoneIntl";
+import Input from "./inputs/Input";
+import Textarea from "./inputs/Textarea";
 
 const schema = Yup.object({
   fullname: Yup.string().required("Your name is required").nullable(),
@@ -36,6 +39,8 @@ const mailString = ({
 <p><small>Lead generated through the campaign: <em>${campaign}</em></small></p>`;
 
 const ContactForm = () => {
+  const [phoneNum, setPhoneNum] = useState();
+
   return (
     <>
       <Formik
@@ -48,17 +53,16 @@ const ContactForm = () => {
           },
           validationSchema: schema,
           onSubmit: async (values, actions) => {
-            console.log(values);
             const response = await notify({
               to: "writing@abroadassist.net",
-              from: values?.email,
+              from: "new-lead@abroadassist.net",
               subject: `This is a test (please ignore) - ${values?.fullname}`,
               content: mailString({
                 campaign: "TESTING",
-                name: values?.fullname,
-                email: values?.email,
-                phone: values?.phone,
-                details: values?.details,
+                name: values?.fullname ?? "",
+                email: values?.email ?? "",
+                phone: phoneNum,
+                details: values?.details ?? "",
                 submissionDate: new Date().toLocaleString(),
               }),
             });
@@ -70,9 +74,10 @@ const ContactForm = () => {
       >
         {(formik) => {
           const disableSubmit =
+            phoneNum?.length < 7 ||
             formik.isSubmitting ||
-            (formik.dirty && !formik.isValid) ||
-            !formik.touched;
+            !formik.touched ||
+            (formik.dirty && !formik.isValid);
 
           return (
             <Form>
@@ -83,13 +88,12 @@ const ContactForm = () => {
                   error: formik.errors.fullname,
                 }}
               >
-                <input
+                <Input
                   type="text"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.fullname}
                   name="fullname"
-                  className="mt-2 peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-base"
                 />
               </FormInputWrapper>
               <FormInputWrapper
@@ -98,45 +102,34 @@ const ContactForm = () => {
                   error: formik.errors.email,
                 }}
               >
-                <input
+                <Input
                   type="email"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
                   name="email"
-                  className="mt-2 peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0  sm:text-base"
                 />
               </FormInputWrapper>
               <FormInputWrapper
-                {...{
-                  label: "Phone",
-                  message: "Share it so we can reach you faster",
-                  error: formik.errors.phone,
-                }}
+                label="Phone Number"
+                message="Share it so we can reach out faster"
               >
-                <input
-                  type="text"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.phone}
-                  name="phone"
-                  className="mt-2 peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-base"
-                />
+                <PhoneIntl value={phoneNum} onChange={(e) => setPhoneNum(e)} />
               </FormInputWrapper>
+
               <FormInputWrapper
                 {...{
                   label: "Details",
                   error: formik.errors.details,
-                  message:
-                    "You can include the course you're applying for, the Universities and anything more you would like to let us know before we reach out to you.",
+                  // message:
+                  //   "You can include the course you're applying for, the Universities and anything more you would like to let us know before we reach out to you.",
                 }}
               >
-                <textarea
+                <Textarea
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.details}
                   name="details"
-                  className="mt-3 peer h-24 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0  sm:text-base"
                 />
               </FormInputWrapper>
               <div className="flex">
