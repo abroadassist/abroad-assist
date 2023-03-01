@@ -35,7 +35,7 @@ const LandingPage = ({
         currentMessage?.whatsappMessage ?? defaultMessage?.whatsappMessage
       ),
     };
-  }, [query]);
+  }, [query, messages]);
 
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth" });
