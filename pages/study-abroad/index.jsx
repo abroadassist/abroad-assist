@@ -1,3 +1,4 @@
+import EducationDetails from "components/forms/EducationDetails";
 import LandingPage from "components/landing-page";
 import LayoutWrapper from "components/layout/LayoutWrapper";
 import { FaStar, FaUniversity } from "react-icons/fa";
@@ -180,6 +181,7 @@ const StudyAbroad = () => {
           stats,
           featureList,
           messages,
+          contactForm: <EducationDetails />,
         }}
       />
     </LayoutWrapper>

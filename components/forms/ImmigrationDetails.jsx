@@ -9,15 +9,19 @@ import { notify } from "api/notify";
 import PhoneIntl from "./inputs/PhoneIntl";
 import Input from "./inputs/Input";
 import Textarea from "./inputs/Textarea";
+import Checkbox from "./inputs/Checkbox";
 
 const schema = Yup.object({
-  fullname: Yup.string().required("Your name is required").nullable(),
+  fullname: Yup.string().required("Your name is required"),
   email: Yup.string()
     .required("Your email is required")
-    .email("Enter a valid email")
-    .nullable(),
-  phone: Yup.string().required("Your phone number is required").nullable(),
-  details: Yup.string().optional().nullable(),
+    .email("Enter a valid email"),
+  //   phone: Yup.string().required("Your phone number is required"),
+  details: Yup.string().optional(),
+  services: Yup.array()
+    .required("Choose a service among below")
+    .ensure()
+    .min(1, "Select at least one option"),
 });
 
 const mailString = ({
@@ -26,8 +30,9 @@ const mailString = ({
   phone,
   details,
   campaign,
+  services = ["Other services"],
   submissionDate,
-}) => `<p>A person has reached out through the Contact form. Find their details below!</p>
+}) => `<p>A lead is interested in your services. Please reach out to them at the earliest.</p>
 <p><strong>Name</strong>: ${name}</p>
 <p><strong>Details</strong>: ${details}</p>
 <p><strong>Contact</strong>:</p>
@@ -38,7 +43,40 @@ const mailString = ({
 <hr />
 <p><small>Lead generated through the campaign: <em>${campaign}</em></small></p>`;
 
-const ContactForm = () => {
+const servicesOptions = [
+  {
+    id: 1,
+    label: "SOP",
+    value: "SOP",
+  },
+  {
+    id: 2,
+    label: "Admission Essay",
+    value: "Admission Essay",
+  },
+  {
+    id: 3,
+    label: "LOR",
+    value: "LOR",
+  },
+  {
+    id: 4,
+    label: "CV/Resume",
+    value: "CV/Resume",
+  },
+  {
+    id: 5,
+    label: "Application Essay",
+    value: "Application Essay",
+  },
+  {
+    id: 6,
+    label: "Others (specify below)",
+    value: "Other services",
+  },
+];
+
+const ImmigrationDetails = ({ campaignString = "Organic" }) => {
   const [phoneNum, setPhoneNum] = useState();
 
   return (
@@ -46,23 +84,27 @@ const ContactForm = () => {
       <Formik
         {...{
           initialValues: {
-            fullname: null,
-            phone: null,
-            email: null,
-            details: null,
+            fullname: "",
+            // phone: "",
+            email: "",
+            details: "",
+            services: [],
           },
           validationSchema: schema,
           onSubmit: async (values, actions) => {
             const response = await notify({
-              to: "contact@abroadassist.net",
+              to: "writing@abroadassist.net",
               from: "new-lead@abroadassist.net",
-              subject: `This is a test (please ignore) - ${values?.fullname}`,
+              subject: `${values?.fullname} needs ${values?.services.join(
+                ", "
+              )} (Writing Services: ${campaignString})`,
               content: mailString({
-                campaign: "TESTING",
+                campaign: campaignString,
                 name: values?.fullname ?? "",
                 email: values?.email ?? "",
                 phone: phoneNum,
                 details: values?.details ?? "",
+                services: values?.services,
                 submissionDate: new Date().toLocaleString(),
               }),
             });
@@ -78,6 +120,14 @@ const ContactForm = () => {
             formik.isSubmitting ||
             !formik.dirty ||
             !formik.isValid;
+
+          console.log("RT conditions", {
+            validPhone: phoneNum?.length < 7,
+            isSubmitting: formik.isSubmitting,
+            isNotDirty: !formik.dirty,
+            isInvalid: !formik.isValid,
+            formErrors: formik.errors,
+          });
 
           return (
             <Form>
@@ -113,16 +163,41 @@ const ContactForm = () => {
               <FormInputWrapper
                 label="Phone Number"
                 message="Share it so we can reach out faster"
+                error={
+                  ((formik.dirty && !phoneNum) || phoneNum?.length < 7) &&
+                  "Your phone number is required"
+                }
               >
-                <PhoneIntl value={phoneNum} onChange={(e) => setPhoneNum(e)} />
+                <PhoneIntl
+                  value={phoneNum}
+                  onChange={(e) => {
+                    console.log(e);
+                    setPhoneNum(e);
+                  }}
+                />
               </FormInputWrapper>
-
+              <FormInputWrapper
+                label="What do you need help with?"
+                message=""
+                error={formik.errors.services}
+              >
+                <Checkbox
+                  {...{
+                    name: "services",
+                    options: servicesOptions,
+                    onChange: formik.handleChange,
+                    onBlur: formik.handleBlur,
+                    values: formik.values.services,
+                    inline: true,
+                  }}
+                />
+              </FormInputWrapper>
               <FormInputWrapper
                 {...{
-                  label: "Message/Query",
+                  label: "Details",
                   error: formik.errors.details,
-                  // message:
-                  //   "You can include the course you're applying for, the Universities and anything more you would like to let us know before we reach out to you.",
+                  message:
+                    "You can include the course you're applying for, the Universities and anything more you would like to let us know before we reach out to you.",
                 }}
               >
                 <Textarea
@@ -146,11 +221,11 @@ const ContactForm = () => {
                     {formik.isSubmitting ? (
                       <>
                         <CgSpinner className="animate-spin mr-2" />
-                        Sending...
+                        Submitting...
                       </>
                     ) : (
                       <>
-                        <FaPaperPlane className="mr-2" /> Send
+                        <FaPaperPlane className="mr-2" /> Get in Touch
                       </>
                     )}
                   </div>
@@ -164,4 +239,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ImmigrationDetails;
