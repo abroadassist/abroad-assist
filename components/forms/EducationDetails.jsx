@@ -37,7 +37,7 @@ const mailString = ({
 <p><strong>Services</strong>: ${services.join(", ")}</p>
 <p><strong>Details</strong>: ${details}</p>
 <p><strong>Contact</strong>:</p>
-<p><a href="mailto:${email}" target="_blank" rel="noopener">${email}</a> | <a href="tel:${phone}" target="_blank" rel="noopener">+${phone}</a></p>
+<p><a href="mailto:${email}" target="_blank" rel="noreferrer">${email}</a> | <a href="tel:${phone}" target="_blank" rel="noreferrer">+${phone}</a></p>
 <p><strong>Submission Date</strong>: ${submissionDate}</p>
 <p>&nbsp;</p>
 <p>Cheers!</p>
