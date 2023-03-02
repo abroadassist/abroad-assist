@@ -24,6 +24,10 @@ const OurServices = () => {
           {...{
             sectionTitle: "Statement of Purpose (SOP)",
             imageSrc: sopImage,
+            button: {
+              text: "Learn More",
+              path: "/study-abroad",
+            },
           }}
         >
           <ul className="my-2 list-disc pl-3">
@@ -50,6 +54,10 @@ const OurServices = () => {
             sectionTitle: "Letter of Recommendation (LOR)",
             imageSrc: lorImage,
             flip: true,
+            button: {
+              text: "Learn More",
+              path: "/study-abroad",
+            },
           }}
         >
           <ul className="my-2 list-disc pl-3">
@@ -73,6 +81,10 @@ const OurServices = () => {
           {...{
             sectionTitle: "Resume & CV",
             imageSrc: resumeImage,
+            button: {
+              text: "Learn More",
+              path: "/study-abroad",
+            },
           }}
         >
           <ul className="my-2 list-disc pl-3">
@@ -99,6 +111,10 @@ const OurServices = () => {
             sectionTitle: "Supplemental Questions",
             imageSrc: questionImage,
             flip: true,
+            button: {
+              text: "Learn More",
+              path: "/study-abroad",
+            },
           }}
         >
           <ul className="my-2 list-disc pl-3">
@@ -124,6 +140,10 @@ const OurServices = () => {
           {...{
             sectionTitle: "Interview Training",
             imageSrc: interviewImage,
+            button: {
+              text: "Learn More",
+              path: "/study-abroad",
+            },
           }}
         >
           <ul className="my-2 list-disc pl-3">
@@ -146,6 +166,10 @@ const OurServices = () => {
             sectionTitle: "Shortlisting Universities",
             imageSrc: shortlistingImage,
             flip: true,
+            button: {
+              text: "Learn More",
+              path: "/study-abroad",
+            },
           }}
         >
           <ul className="my-2 list-disc pl-3">
@@ -168,6 +192,10 @@ const OurServices = () => {
           {...{
             sectionTitle: "Filing & Verifying Grad School Applications",
             imageSrc: filingImage,
+            button: {
+              text: "Learn More",
+              path: "/study-abroad",
+            },
           }}
         >
           <ul className="my-2 list-disc pl-3">
