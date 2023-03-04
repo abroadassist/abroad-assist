@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-abroadassistnet-dev-201220-authRole",
+      "UnauthRoleArn": "arn:aws:iam::472249926569:role/amplify-abroadassistnet-dev-201220-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::472249926569:role/amplify-abroadassistnet-dev-201220-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-abroadassistnet-dev-201220-deployment",
+      "UnauthRoleName": "amplify-abroadassistnet-dev-201220-unauthRole",
+      "StackName": "amplify-abroadassistnet-dev-201220",
+      "StackId": "arn:aws:cloudformation:ap-south-1:472249926569:stack/amplify-abroadassistnet-dev-201220/c4c6db90-ba9a-11ed-85bf-06bb0c7171ee",
+      "AmplifyAppId": "dpyv6cjwchbl8"
+    }
+  }
+}
