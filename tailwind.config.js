@@ -18,6 +18,10 @@ module.exports = {
           blue: { 1: "#386fa5" },
         },
       },
+      fontFamily: {
+        sans: ["Raleway"],
+        serif: ["Lora"],
+      },
     },
   },
   plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],

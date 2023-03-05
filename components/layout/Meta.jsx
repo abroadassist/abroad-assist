@@ -1,14 +1,10 @@
 import Head from "next/head";
 
-const Meta = ({
-  siteTitle = "Abroad Assist",
-  siteDescription = "Abroad Assist welcomes you!",
-}) => {
+const Meta = ({ siteTitle = "Abroad Assist", siteDescription = "Abroad Assist welcomes you!" }) => {
   return (
     <Head>
       <title>{siteTitle}</title>
       <meta name="description" content={siteDescription} />
-      {/* TODO add favicon */}
       <link rel="icon" href="/favicon.ico" />
     </Head>
   );
