@@ -1,3 +1,5 @@
+import React, { useMemo } from "react";
+import { useRouter } from "next/router";
 import EducationDetails from "components/forms/EducationDetails";
 import LandingPage from "components/landing-page";
 import LayoutWrapper from "components/layout/LayoutWrapper";
@@ -103,17 +105,17 @@ const stats = [
     number: 10,
   },
   {
-    order: 1,
+    order: 2,
     title: "Satisfied Clients",
     number: 1000,
   },
   {
-    order: 1,
+    order: 3,
     title: "Masters Courses Written For",
     number: 100,
   },
   {
-    order: 1,
+    order: 4,
     title: "Words Written so Far",
     number: 1000000,
   },
@@ -144,28 +146,38 @@ const featureList = [
   },
 ];
 
-const messages = (query) => {
-  return [
-    {
-      default: true,
-      whatsappMessage: "Hi, this is a default message!",
-    },
-    {
-      condition: query?.c === "1",
-      whatsappMessage: "",
-    },
-    {
-      condition: query?.c === "2",
-      whatsappMessage: "",
-    },
-    {
-      condition: query?.c === "3",
-      whatsappMessage: "",
-    },
-  ];
+const campaigns = ({ campaignId }) => {
+  let whatsappMessage, campaignString;
+  switch (campaignId) {
+    case "1":
+      whatsappMessage = "Hi, I would like to avail your writing services.";
+      campaignString = "Buying Intention";
+      break;
+    case "2":
+      whatsappMessage =
+        "Hi, I would like to learn more about your writing services.";
+      campaignString = "Non-Buying Intention";
+      break;
+    case "3":
+      whatsappMessage = "Hey! I would like to avail your writing services.";
+      campaignString = "UAE Region";
+      break;
+
+    default:
+      whatsappMessage = "Hi, I would like to opt for your writing services.";
+      campaignString = "Organic";
+      break;
+  }
+  return {
+    whatsappMessage: encodeURIComponent(whatsappMessage),
+    campaignString,
+  };
 };
 
 const StudyAbroad = () => {
+  const { query } = useRouter();
+  const campaign = useMemo(() => campaigns({ campaignId: query?.c }), [query]);
+
   return (
     <LayoutWrapper
       {...{
@@ -180,8 +192,10 @@ const StudyAbroad = () => {
           workflow,
           stats,
           featureList,
-          messages,
-          contactForm: <EducationDetails />,
+          campaign,
+          contactForm: (
+            <EducationDetails campaignString={campaign?.campaignString} />
+          ),
         }}
       />
     </LayoutWrapper>

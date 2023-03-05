@@ -86,7 +86,6 @@ const EducationDetails = ({ campaignString = "Organic" }) => {
         {...{
           initialValues: {
             fullname: "",
-            // phone: "",
             email: "",
             details: "",
             services: [],
@@ -100,7 +99,7 @@ const EducationDetails = ({ campaignString = "Organic" }) => {
                 ", "
               )} (Writing Services: ${campaignString})`,
               content: mailString({
-                campaign: campaignString,
+                campaign: `Writing Services - ${campaignString}`,
                 name: values?.fullname ?? "",
                 email: values?.email ?? "",
                 phone: phoneNum,
@@ -121,14 +120,6 @@ const EducationDetails = ({ campaignString = "Organic" }) => {
             formik.isSubmitting ||
             !formik.dirty ||
             !formik.isValid;
-
-          console.log("RT conditions", {
-            validPhone: phoneNum?.length < 7,
-            isSubmitting: formik.isSubmitting,
-            isNotDirty: !formik.dirty,
-            isInvalid: !formik.isValid,
-            formErrors: formik.errors,
-          });
 
           return (
             <Form>
@@ -172,7 +163,6 @@ const EducationDetails = ({ campaignString = "Organic" }) => {
                 <PhoneIntl
                   value={phoneNum}
                   onChange={(e) => {
-                    console.log(e);
                     setPhoneNum(e);
                   }}
                 />

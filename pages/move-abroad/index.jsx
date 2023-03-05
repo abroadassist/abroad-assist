@@ -1,5 +1,8 @@
+import React, { useMemo } from "react";
+import ImmigrationDetails from "components/forms/ImmigrationDetails";
 import LandingPage from "components/landing-page";
 import LayoutWrapper from "components/layout/LayoutWrapper";
+import { useRouter } from "next/router";
 import { FaStar, FaHeadset } from "react-icons/fa";
 import { FiFileText } from "react-icons/fi";
 
@@ -110,12 +113,12 @@ const stats = [
     number: 10,
   },
   {
-    order: 1,
+    order: 2,
     title: "VISA SOPs delivered",
     number: 1000,
   },
   {
-    order: 1,
+    order: 3,
     title: "Words Written so Far",
     number: 1000000,
   },
@@ -146,28 +149,41 @@ const featureList = [
   },
 ];
 
-const messages = (query) => {
-  return [
-    {
-      default: true,
-      whatsappMessage: "Hi, this is a default message!",
-    },
-    {
-      condition: query?.c === "1",
-      whatsappMessage: "",
-    },
-    {
-      condition: query?.c === "2",
-      whatsappMessage: "",
-    },
-    {
-      condition: query?.c === "3",
-      whatsappMessage: "",
-    },
-  ];
+const campaigns = ({ campaignId }) => {
+  let whatsappMessage, campaignString;
+  switch (campaignId) {
+    case "1":
+      whatsappMessage =
+        "Hi, I would like to learn more about your visa sop writing services.";
+      campaignString = "Buying Intention";
+      break;
+    case "2":
+      whatsappMessage =
+        "Hi, I would like to learn more about your immigration writing services.";
+      campaignString = "Non-Buying Intention";
+      break;
+    case "3":
+      whatsappMessage =
+        "Hi, I would like to find out more about your visa sop writing services.";
+      campaignString = "International";
+      break;
+
+    default:
+      whatsappMessage =
+        "Hi, I would like to know more about your writing services.";
+      campaignString = "Organic";
+      break;
+  }
+  return {
+    whatsappMessage: encodeURIComponent(whatsappMessage),
+    campaignString,
+  };
 };
 
 const MoveAbroad = () => {
+  const { query } = useRouter();
+  const campaign = useMemo(() => campaigns({ campaignId: query?.c }), [query]);
+
   return (
     <LayoutWrapper
       {...{
@@ -182,7 +198,10 @@ const MoveAbroad = () => {
           workflow,
           stats,
           featureList,
-          messages,
+          campaign,
+          contactForm: (
+            <ImmigrationDetails campaignString={campaign?.campaignString} />
+          ),
         }}
       />
     </LayoutWrapper>

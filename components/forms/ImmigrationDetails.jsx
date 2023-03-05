@@ -18,10 +18,6 @@ const schema = Yup.object({
     .email("Enter a valid email"),
   //   phone: Yup.string().required("Your phone number is required"),
   details: Yup.string().optional(),
-  services: Yup.array()
-    .required("Choose a service among below")
-    .ensure()
-    .min(1, "Select at least one option"),
 });
 
 const mailString = ({
@@ -30,7 +26,6 @@ const mailString = ({
   phone,
   details,
   campaign,
-  services = ["Other services"],
   submissionDate,
 }) => `<p>A lead is interested in your services. Please reach out to them at the earliest.</p>
 <p><strong>Name</strong>: ${name}</p>
@@ -85,10 +80,8 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
         {...{
           initialValues: {
             fullname: "",
-            // phone: "",
             email: "",
             details: "",
-            services: [],
           },
           validationSchema: schema,
           onSubmit: async (values, actions) => {
@@ -97,14 +90,13 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
               from: "new-lead@abroadassist.net",
               subject: `${values?.fullname} needs ${values?.services.join(
                 ", "
-              )} (Writing Services: ${campaignString})`,
+              )} (VISA/Immigration: ${campaignString})`,
               content: mailString({
-                campaign: campaignString,
+                campaign: `VISA/Immigration - ${campaignString}`,
                 name: values?.fullname ?? "",
                 email: values?.email ?? "",
                 phone: phoneNum,
                 details: values?.details ?? "",
-                services: values?.services,
                 submissionDate: new Date().toLocaleString(),
               }),
             });
@@ -120,14 +112,6 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
             formik.isSubmitting ||
             !formik.dirty ||
             !formik.isValid;
-
-          console.log("RT conditions", {
-            validPhone: phoneNum?.length < 7,
-            isSubmitting: formik.isSubmitting,
-            isNotDirty: !formik.dirty,
-            isInvalid: !formik.isValid,
-            formErrors: formik.errors,
-          });
 
           return (
             <Form>
@@ -171,12 +155,11 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
                 <PhoneIntl
                   value={phoneNum}
                   onChange={(e) => {
-                    console.log(e);
                     setPhoneNum(e);
                   }}
                 />
               </FormInputWrapper>
-              <FormInputWrapper
+              {/* <FormInputWrapper
                 label="What do you need help with?"
                 message=""
                 error={formik.errors.services}
@@ -191,13 +174,13 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
                     inline: true,
                   }}
                 />
-              </FormInputWrapper>
+              </FormInputWrapper> */}
               <FormInputWrapper
                 {...{
                   label: "Details",
                   error: formik.errors.details,
                   message:
-                    "You can include the course you're applying for, the Universities and anything more you would like to let us know before we reach out to you.",
+                    "You can include the country you're moving to, documents required and any more information you would like us to know.",
                 }}
               >
                 <Textarea

@@ -142,7 +142,7 @@ const ContactForm = () => {
                   }`}
                   disabled={disableSubmit}
                 >
-                  <div className="flex flex-row items-center">
+                  <div className="flex flex-row items-center justify-center">
                     {formik.isSubmitting ? (
                       <>
                         <CgSpinner className="animate-spin mr-2" />

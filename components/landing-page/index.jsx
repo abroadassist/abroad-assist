@@ -1,9 +1,9 @@
-import React, { useMemo, useRef } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import Container from "components/wrappers/Container";
+import { useExitIntent } from "use-exit-intent";
 
 // assets
 import ContactForm from "components/forms/ContactForm";
-import { useRouter } from "next/router";
 import {
   FaArrowRight,
   FaFileAlt,
@@ -11,6 +11,7 @@ import {
   FaPhone,
   FaWhatsapp,
 } from "react-icons/fa";
+import LandingPageModal from "components/modals/LandingPagePopup";
 
 const LandingPage = ({
   heading = "Welcome Aboard!",
@@ -22,24 +23,40 @@ const LandingPage = ({
   stats,
   featureList,
   testimonials,
-  messages,
+  campaign,
 }) => {
   const formRef = useRef();
-  const { query } = useRouter();
+  const { registerHandler } = useExitIntent({
+    cookie: {
+      daysToExpire: 3,
+      key: "use-exit-intent",
+    },
+    desktop: {
+      triggerOnIdle: true,
+      useBeforeUnload: false,
+      triggerOnMouseLeave: true,
+      delayInSecondsToTrigger: 5,
+    },
+    mobile: {
+      triggerOnIdle: true,
+      delayInSecondsToTrigger: 5,
+    },
+  });
 
-  const message = useMemo(() => {
-    const currentMessage = messages(query)?.find((m) => m.condition);
-    const defaultMessage = messages(query)?.find((m) => m.default);
-    return {
-      whatsappMessage: encodeURIComponent(
-        currentMessage?.whatsappMessage ?? defaultMessage?.whatsappMessage
-      ),
-    };
-  }, [query, messages]);
+  const [showPopup, setShowPopup] = useState(false);
 
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const openPopup = () => {
+    setShowPopup(true);
+  };
+
+  registerHandler({
+    id: "openModal",
+    handler: openPopup,
+  });
 
   return (
     <>
@@ -128,7 +145,7 @@ const LandingPage = ({
               ))}
               <div className="flex flex-col lg:flex-row justify-center">
                 <a
-                  href={`https://wa.me/919949883658?text=${message?.whatsappMessage}`}
+                  href={`https://wa.me/919949883658?text=${campaign?.whatsappMessage}`}
                   target="_blank"
                   className="flex"
                 >
@@ -246,12 +263,21 @@ const LandingPage = ({
       <div className="mb-20 mt-4">
         <button
           className="flex flex-row items-center mx-auto p-3 px-6 bg-aa-outer text-white text-2xl font-bold hover:animate-bounce rounded-lg shadow hover:shadow-lg"
-          onClick={scrollToForm}
+          onClick={openPopup}
         >
           <FaPaperPlane className="mr-2" /> Get in Touch
         </button>
       </div>
       {/* testimonials? */}
+
+      {/*  */}
+      <LandingPageModal
+        {...{
+          open: showPopup,
+          handleClose: () => setShowPopup(false),
+          contactForm,
+        }}
+      />
     </>
   );
 };
