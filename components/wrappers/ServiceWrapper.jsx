@@ -7,14 +7,14 @@ const ServiceWrapper = ({ children, sectionTitle, imageSrc, flip, button }) => (
       {children}
       {!!button ? (
         <div className="flex w-full">
-          <Link href={button?.path || "/"} className="md:my-4 w-full mx-4">
+          {/* <Link href={button?.path || "/"} className="md:my-4 w-full mx-4">
             <button
               role="link"
               className=" w-full py-1 px-2 rounded-lg font-semibold border border-aa-inner shadow bg-aa-inner text-slate-100 hover:bg-transparent hover:text-aa-inner"
             >
               {button?.text ?? "Learn More"}
             </button>
-          </Link>
+          </Link> */}
         </div>
       ) : (
         ""
