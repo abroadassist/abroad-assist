@@ -23,6 +23,7 @@ const LandingPage = ({
   stats,
   featureList,
   testimonials,
+  contactNo = "919949883658",
   campaign,
 }) => {
   const formRef = useRef();
@@ -78,9 +79,7 @@ const LandingPage = ({
 
         <Container classes="px-8">
           {/* Welcome Aboard title */}
-          <h1 className="text-5xl sm:text-7xl font-bold text-white ">
-            {heading}
-          </h1>
+          <h1 className="text-5xl sm:text-7xl font-bold text-white ">{heading}</h1>
           <div className="py-5 text-xl  sm:text-2xl">
             {bannerParagraphs?.map((paragraph) => {
               return (
@@ -125,27 +124,20 @@ const LandingPage = ({
       {/* services & form section - start */}
       <Container classes="flex flex-col-reverse lg:flex-row gap-3 mt-8 mb-20">
         <div className="flex-1 p-4 ">
-          <h2 className="font-bold text-6xl text-center py-2 mb-5 text-aa-outer ">
-            Our Services
-          </h2>
+          <h2 className="font-bold text-6xl text-center py-2 mb-5 text-aa-outer ">Our Services</h2>
           <div className="flex">
             <div className="mx-auto">
               {services.map((service) => (
-                <div
-                  key={`service-${service.id}`}
-                  className="ml-8 my-4 flex items-center"
-                >
+                <div key={`service-${service.id}`} className="ml-8 my-4 flex items-center">
                   <span className="mr-4">
                     <FaFileAlt className="mr-2 text-[#DEBE26]" size={24} />
                   </span>
-                  <span className="font-serif text-lg text-aa-inner">
-                    {service.description}
-                  </span>
+                  <span className="font-serif text-lg text-aa-inner">{service.description}</span>
                 </div>
               ))}
               <div className="flex flex-col lg:flex-row justify-center">
                 <a
-                  href={`https://wa.me/919949883658?text=${campaign?.whatsappMessage}`}
+                  href={`https://wa.me/${contactNo}?text=${campaign?.whatsappMessage}`}
                   target="_blank"
                   className="flex"
                 >
@@ -156,7 +148,7 @@ const LandingPage = ({
                     <FaWhatsapp className="mr-2" size={24} /> WhatsApp
                   </button>
                 </a>
-                <a href={"tel:+919949883658"} className="" target="_blank">
+                <a href={`tel:+${contactNo}`} className="" target="_blank">
                   <button
                     role="link"
                     className="flex items-center justify-center p-2 px-4 m-2 mx-auto lg:mx-2 w-36 bg-[#1e498a] text-white font-semibold rounded "
@@ -170,10 +162,7 @@ const LandingPage = ({
           {/* service list */}
         </div>
         <div className="flex-1 p-4 lg:border-l">
-          <h2
-            className="font-bold text-6xl text-center py-2 mb-5 text-aa-outer "
-            ref={formRef}
-          >
+          <h2 className="font-bold text-6xl text-center py-2 mb-5 text-aa-outer " ref={formRef}>
             Get a Callback
           </h2>
           <div className="flex">
@@ -188,16 +177,11 @@ const LandingPage = ({
       <div className="bg-aa-inner p-4 py-12">
         <Container classes="">
           {/* workflow list */}
-          <h2 className="text-4xl lg:text-6xl text-white text-center font-sans font-black">
-            How It Works
-          </h2>
+          <h2 className="text-4xl lg:text-6xl text-white text-center font-sans font-black">How It Works</h2>
           <hr className="mt-4 mb-8 w-1/3 mx-auto" />
           <div className="flex flex-col px-12">
             {workflow.map((step, index) => (
-              <div
-                key={step.step}
-                className="p-4 py-6 bg-slate-200 my-5 rounded-md shadow-lg"
-              >
+              <div key={step.step} className="p-4 py-6 bg-slate-200 my-5 rounded-md shadow-lg">
                 <h3 className="text-2xl text-aa-blue-1 font-bold mb-3">
                   {index + 1}. {step.title}
                 </h3>
@@ -207,22 +191,15 @@ const LandingPage = ({
           </div>
           {/* stats */}
           <div className="my-12" />
-          <h2 className="text-4xl lg:text-6xl text-[#DEBE26] text-center font-sans font-black">
-            Our Track Record
-          </h2>
+          <h2 className="text-4xl lg:text-6xl text-[#DEBE26] text-center font-sans font-black">Our Track Record</h2>
           <hr className="mt-4 mb-8 w-1/3 mx-auto" />
           <div className="flex flex-wrap justify-evenly">
             {stats.map((stat) => (
-              <div
-                key={stat.order}
-                className="basis-full md:basis-1/2 lg:basis-1/4 p-5 text-center"
-              >
+              <div key={stat.order} className="basis-full md:basis-1/2 lg:basis-1/4 p-5 text-center">
                 <h3 className="text-5xl text-white font-bold mb-3">
                   {new Intl.NumberFormat("en-US").format(stat.number)}+
                 </h3>
-                <p className="font-serif text-lg font-semibold text-[#DEBE26]">
-                  {stat.title}
-                </p>
+                <p className="font-serif text-lg font-semibold text-[#DEBE26]">{stat.title}</p>
               </div>
             ))}
           </div>
@@ -234,22 +211,15 @@ const LandingPage = ({
       <div className="bg-white p-4 py-12">
         <Container>
           <div className="flex-1 p-4 ">
-            <h2 className="font-black text-6xl text-center py-2 mb-5 text-aa-outer ">
-              Why Choose Us?
-            </h2>
+            <h2 className="font-black text-6xl text-center py-2 mb-5 text-aa-outer ">Why Choose Us?</h2>
             <div className="flex">
               <div className="mx-auto">
                 {featureList.map((featureListItem) => (
-                  <div
-                    key={`feature-list-item-${featureListItem.id}`}
-                    className="ml-8 my-4 flex items-center"
-                  >
+                  <div key={`feature-list-item-${featureListItem.id}`} className="ml-8 my-4 flex items-center">
                     <span className="mr-4">
                       <FaArrowRight className="mr-2 " size={24} />
                     </span>
-                    <span className="font-serif text-lg text-aa-inner">
-                      {featureListItem.description}
-                    </span>
+                    <span className="font-serif text-lg text-aa-inner">{featureListItem.description}</span>
                   </div>
                 ))}
               </div>
