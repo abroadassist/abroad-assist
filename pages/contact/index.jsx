@@ -13,9 +13,9 @@ import ContactForm from "components/forms/ContactForm";
 const contacts = [
   {
     title: "Phone",
-    link: "tel:+91994988365",
+    link: "tel:+919949883658",
     icon: phoneIcon,
-    text: "(+91) 994-988-365",
+    text: "(+91) 994-988-3658",
   },
   {
     title: "Email",
