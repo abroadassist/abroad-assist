@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import DentistryDetails from "components/forms/DentistryDetails";
 import LandingPage from "components/landing-page";
 import LayoutWrapper from "components/layout/LayoutWrapper";
-import { FaPiggyBank } from "react-icons/fa";
 import { FiUserCheck } from "react-icons/fi";
 import { TfiWrite } from "react-icons/tfi";
 import { GiTakeMyMoney } from "react-icons/gi";
@@ -160,7 +159,8 @@ const Dentistry = () => {
   return (
     <LayoutWrapper
       {...{
-        siteTitle: "Study Abroad with the Abroad Assist Edge! | Abroad Assist",
+        siteTitle: "Expert Assistance for Dental Applicants | Abroad Assist",
+        siteDescription: "Writing & Interview Training Services for Dental Students",
       }}
     >
       <LandingPage
