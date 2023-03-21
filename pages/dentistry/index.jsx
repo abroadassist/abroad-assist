@@ -10,7 +10,7 @@ import { GiTakeMyMoney } from "react-icons/gi";
 const paragraphs = [
   {
     id: 1,
-    text: "We're a dentist-writer duo working exclusively with aspiring dentists applying to DDS, AEGD, & Advanced Standing Programs in the US.",
+    text: "We're a dentist-writer duo working exclusively with aspiring dentists applying to DDS, AEGD, CAAPID & Advanced Standing Programs in the US.",
   },
 ];
 
@@ -18,21 +18,22 @@ const featureCards = [
   {
     id: 1,
     title: "Expert Assistance",
-    details: "Get expert help right from a dentist based out of the US, working in the healthcare sector. ",
+    details:
+      "Get expert help right from an internationally trained dentist working as a healthcare administration professional in the US.",
     icon: <FiUserCheck className="mr-2" size={42} />,
   },
   {
     id: 2,
-    title: "Top-Notch Writing",
+    title: "Top Notch Writing",
     details:
-      "With a combined experience of 20+ years, we produce top-tier quality-giving you nothing but the best value for money",
+      "With a combined experience of 20+ years, we produce writing materials that are well-crafted and may significantly improve your chances of admission.",
     icon: <TfiWrite className="mr-2" size={42} />,
   },
   {
     id: 3,
-    title: "Affordable Pricing",
+    title: "Reasonably Priced",
     details:
-      "Unlike mega consultancies, we're a dentist-writer duo looking to assist dentists in their application process for a fair charge.",
+      "We are a dentist-writer duo striving to offer the best quality of work at modest prices. Below-the-market pricing & above-the-market quality is our guarantee.",
     icon: <GiTakeMyMoney className="mr-2" size={42} />,
   },
 ];
@@ -118,23 +119,19 @@ const stats = [
 const featureList = [
   {
     id: 1,
-    description: "Expert team with 20+ years of combined experience.",
+    description: "Expert team comprising a dentist and writer with a combined experience of more than 25 years. ",
   },
   {
     id: 2,
-    description: "Catered to courses from technology and IT to dentistry and medicine.",
+    description: "Catering exclusively to internationally trained dentists applying for advanced standing programs.",
   },
   {
     id: 3,
-    description: "100% original and unique writing tailored to your profile.",
+    description: "100% unique writing tailored to your language test scores for improved authenticity & success rate.",
   },
   {
     id: 4,
-    description: "Writing standards in accordance with your test scores for maximum success.",
-  },
-  {
-    id: 5,
-    description: "Dedicated customer service and support.",
+    description: "Dedicated customer support and on-time delivery of materials.",
   },
 ];
 
