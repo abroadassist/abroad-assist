@@ -4,13 +4,7 @@ import { useExitIntent } from "use-exit-intent";
 
 // assets
 import ContactForm from "components/forms/ContactForm";
-import {
-  FaArrowRight,
-  FaFileAlt,
-  FaPaperPlane,
-  FaPhone,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaArrowRight, FaFileAlt, FaPaperPlane, FaPhone, FaWhatsapp } from "react-icons/fa";
 import LandingPageModal from "components/modals/LandingPagePopup";
 
 const LandingPage = ({
@@ -36,11 +30,11 @@ const LandingPage = ({
       triggerOnIdle: true,
       useBeforeUnload: false,
       triggerOnMouseLeave: true,
-      delayInSecondsToTrigger: 5,
+      delayInSecondsToTrigger: 4,
     },
     mobile: {
       triggerOnIdle: true,
-      delayInSecondsToTrigger: 5,
+      delayInSecondsToTrigger: 4,
     },
   });
 
