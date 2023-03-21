@@ -65,7 +65,7 @@ const testimonials = [
     fullname: "Lalitha",
     comment:
       "I always dreamed of studying abroad. Though I am passionate, I didn’t know how, when, and where to start. I approached ABROAD ASSIST to guide me. They helped me starting from the exams, selecting colleges, sop, resumes, applications, admission interviews till the end. The best part with Abroad Assist is they gave me liberty in choosing universities of my choice and kept me involved throughout the process. I thank the Abroad Assist’s team for helping me to fulfill my dream and molding me in many aspects for my future endeavours",
-    title: "Director at Doctor of Dental Surgery",
+    title: "Doctor of Dental Surgery",
   },
   {
     fullname: "Zakir",
@@ -110,12 +110,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex-auto hidden md:block md:w-32">
-            <Image
-              alt="airplane flying around globe"
-              src={BannerImage}
-              width={400}
-              height={400}
-            />
+            <Image alt="airplane flying around globe" src={BannerImage} width={400} height={400} />
           </div>
         </div>
       </TopBannerWrapper>
@@ -125,8 +120,7 @@ const Home = () => {
       <div className="bg-gray-100">
         <SectionWrapper
           {...{
-            childWrapperClasses:
-              "mx-auto py-4 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+            childWrapperClasses: "mx-auto py-4 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
             sectionTitle: "What we offer",
             heading: "Our Services",
             subheading:
@@ -135,15 +129,8 @@ const Home = () => {
         >
           {services?.map((service, index) => {
             return (
-              <Link
-                href={service.path}
-                className="bg-slate-100 shadow p-4 rounded-md"
-                key={`home-service-${index}`}
-              >
-                <div
-                  key={`service-${index}`}
-                  className="flex flex-row gap-3 hover:animate-pulse"
-                >
+              <Link href={service.path} className="bg-slate-100 shadow p-4 rounded-md" key={`home-service-${index}`}>
+                <div key={`service-${index}`} className="flex flex-row gap-3 hover:animate-pulse">
                   {/* Icon */}
                   <div className="rounded-lg py-3 h-12 w-12">
                     <Image
@@ -156,9 +143,7 @@ const Home = () => {
                     />
                   </div>
                   {/* Title */}
-                  <h4 className="py-3 md:py-1 md:text-md text-start text-lg font-medium">
-                    {service.label}
-                  </h4>
+                  <h4 className="py-3 md:py-1 md:text-md text-start text-lg font-medium">{service.label}</h4>
                 </div>
               </Link>
             );
@@ -176,14 +161,12 @@ const Home = () => {
           }}
         >
           <p className="my-2">
-            Abroad Assist is a premier writing services agency providing expert
-            help to abroad aspirants.
+            Abroad Assist is a premier writing services agency providing expert help to abroad aspirants.
           </p>
           <p className="my-2">
-            Led by a doctor-turned-health administration professional and an
-            engineer-turned-writer working to fuel your abroad dreams, at the
-            end of the day, our goal is not profiteering, but ensuring that you
-            receive satisfactory work without having to shell out a fortune.
+            Led by a doctor-turned-health administration professional and an engineer-turned-writer working to fuel your
+            abroad dreams, at the end of the day, our goal is not profiteering, but ensuring that you receive
+            satisfactory work without having to shell out a fortune.
           </p>
         </ImageSection>
       </Container>
@@ -215,8 +198,7 @@ const Home = () => {
       {/* CTA section - start */}
       <CTASection
         {...{
-          heading:
-            "Let us supercharge your academic prospects and help you pursue an advanced program of your choice.",
+          heading: "Let us supercharge your academic prospects and help you pursue an advanced program of your choice.",
           subheading: "REACH OUT TO US TODAY",
           path: "/contact",
           buttonText: "Contact Us",
