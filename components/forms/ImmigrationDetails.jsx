@@ -13,9 +13,7 @@ import Checkbox from "./inputs/Checkbox";
 
 const schema = Yup.object({
   fullname: Yup.string().required("Your name is required"),
-  email: Yup.string()
-    .required("Your email is required")
-    .email("Enter a valid email"),
+  email: Yup.string().required("Your email is required").email("Enter a valid email"),
   //   phone: Yup.string().required("Your phone number is required"),
   details: Yup.string().optional(),
 });
@@ -88,9 +86,7 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
             const response = await notify({
               to: "writing@abroadassist.net",
               from: "new-lead@abroadassist.net",
-              subject: `${values?.fullname} needs ${values?.services.join(
-                ", "
-              )} (VISA/Immigration: ${campaignString})`,
+              subject: `${values?.fullname} needs ${values?.services.join(", ")} (VISA/Immigration: ${campaignString})`,
               content: mailString({
                 campaign: `VISA/Immigration - ${campaignString}`,
                 name: values?.fullname ?? "",
@@ -102,16 +98,14 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
             });
             if (!!response?.status) {
               actions.setSubmitting(false);
+              actions.resetForm();
+              setPhoneNum();
             }
           },
         }}
       >
         {(formik) => {
-          const disableSubmit =
-            phoneNum?.length < 7 ||
-            formik.isSubmitting ||
-            !formik.dirty ||
-            !formik.isValid;
+          const disableSubmit = phoneNum?.length < 7 || formik.isSubmitting || !formik.dirty || !formik.isValid;
 
           return (
             <Form>
@@ -147,10 +141,7 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
               <FormInputWrapper
                 label="Phone Number"
                 message="Share it so we can reach out faster"
-                error={
-                  ((formik.dirty && !phoneNum) || phoneNum?.length < 7) &&
-                  "Your phone number is required"
-                }
+                error={((formik.dirty && !phoneNum) || phoneNum?.length < 7) && "Your phone number is required"}
               >
                 <PhoneIntl
                   value={phoneNum}
@@ -194,9 +185,7 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
                 <button
                   type="submit"
                   className={`p-3 px-5 mt-6 w-44 rounded mx-auto font-bold text-white text-lg ${
-                    disableSubmit
-                      ? "bg-slate-400"
-                      : "bg-blue-900 hover:bg-aa-inner hover:animate-pulse shadow-md"
+                    disableSubmit ? "bg-slate-400" : "bg-blue-900 hover:bg-aa-inner hover:animate-pulse shadow-md"
                   }`}
                   disabled={disableSubmit}
                 >

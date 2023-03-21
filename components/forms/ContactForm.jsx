@@ -12,10 +12,7 @@ import Textarea from "./inputs/Textarea";
 
 const schema = Yup.object({
   fullname: Yup.string().required("Your name is required").nullable(),
-  email: Yup.string()
-    .required("Your email is required")
-    .email("Enter a valid email")
-    .nullable(),
+  email: Yup.string().required("Your email is required").email("Enter a valid email").nullable(),
   phone: Yup.string().required("Your phone number is required").nullable(),
   details: Yup.string().optional().nullable(),
 });
@@ -68,16 +65,14 @@ const ContactForm = () => {
             });
             if (!!response?.status) {
               actions.setSubmitting(false);
+              actions.resetForm();
+              setPhoneNum();
             }
           },
         }}
       >
         {(formik) => {
-          const disableSubmit =
-            phoneNum?.length < 7 ||
-            formik.isSubmitting ||
-            !formik.dirty ||
-            !formik.isValid;
+          const disableSubmit = phoneNum?.length < 7 || formik.isSubmitting || !formik.dirty || !formik.isValid;
 
           return (
             <Form>
@@ -110,10 +105,7 @@ const ContactForm = () => {
                   name="email"
                 />
               </FormInputWrapper>
-              <FormInputWrapper
-                label="Phone Number"
-                message="Share it so we can reach out faster"
-              >
+              <FormInputWrapper label="Phone Number" message="Share it so we can reach out faster">
                 <PhoneIntl value={phoneNum} onChange={(e) => setPhoneNum(e)} />
               </FormInputWrapper>
 
@@ -136,9 +128,7 @@ const ContactForm = () => {
                 <button
                   type="submit"
                   className={`p-3 px-5 mt-6 w-44 rounded mx-auto font-bold text-white text-lg ${
-                    disableSubmit
-                      ? "bg-slate-400"
-                      : "bg-blue-900 hover:bg-aa-inner hover:animate-pulse shadow-md"
+                    disableSubmit ? "bg-slate-400" : "bg-blue-900 hover:bg-aa-inner hover:animate-pulse shadow-md"
                   }`}
                   disabled={disableSubmit}
                 >

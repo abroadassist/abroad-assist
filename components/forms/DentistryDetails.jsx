@@ -103,6 +103,8 @@ const DentistryDetails = ({ campaignString = "Organic" }) => {
             });
             if (!!response?.status) {
               actions.setSubmitting(false);
+              actions.resetForm();
+              setPhoneNum();
             }
           },
         }}
