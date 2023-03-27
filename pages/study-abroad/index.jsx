@@ -31,8 +31,7 @@ const featureCards = [
   {
     id: 3,
     title: "Customised to University Requirements",
-    details:
-      "Each SOP & Admission Essay is customized to the university you apply for.",
+    details: "Each SOP & Admission Essay is customized to the university you apply for.",
     icon: <FaUniversity className="mr-2" size={42} />,
   },
 ];
@@ -40,7 +39,7 @@ const featureCards = [
 const services = [
   {
     id: 1,
-    description: "Statement of Purpose",
+    description: "Statement of Purpose/Personal Statement",
   },
   {
     id: 2,
@@ -60,13 +59,12 @@ const services = [
   },
 ];
 
-const workflow = [
+const workflows = ({ contactNoDisplay }) => [
   {
     step: 1,
     icon: "",
     title: "Get in Touch With Us",
-    description:
-      "Fill out our contact form or call us at +91-9949883658 to get in touch. We can discuss your requirements in detail.",
+    description: `Fill out our contact form or call us at ${contactNoDisplay} to get in touch. We can discuss your requirements in detail.`,
   },
   {
     step: 2,
@@ -80,21 +78,20 @@ const workflow = [
     icon: "",
     title: "Get the First Draft",
     description:
-      "After sharing all the inputs and filling out the form, we’ll draft your writing materials and share them with you for review.",
+      "After sharing all the inputs and filling out the form, we'll draft your writing materials and share them with you for review.",
   },
   {
     step: 4,
     icon: "",
     title: "Feedback",
     description:
-      "Get on a call with us to discuss feedback and modifications to your written materials. If you’ve opted for university customization, we start that process at this stage.",
+      "Get on a call with us to discuss feedback and modifications to your written materials. If you've opted for university customization, we start that process at this stage.",
   },
   {
     step: 5,
     icon: "",
     title: "Get the Final Draft of your Write Up",
-    description:
-      "Receive your finalized versions of 100% unique and plagiarism-free written materials. ",
+    description: "Receive your finalized versions of 100% unique and plagiarism-free written materials. ",
   },
 ];
 
@@ -128,8 +125,7 @@ const featureList = [
   },
   {
     id: 2,
-    description:
-      "Catered to courses from technology and IT to dentistry and medicine.",
+    description: "Catered to courses from technology and IT to dentistry and medicine.",
   },
   {
     id: 3,
@@ -137,8 +133,7 @@ const featureList = [
   },
   {
     id: 4,
-    description:
-      "Writing standards in accordance with your test scores for maximum success.",
+    description: "Writing standards in accordance with your test scores for maximum success.",
   },
   {
     id: 5,
@@ -147,20 +142,25 @@ const featureList = [
 ];
 
 const campaigns = ({ campaignId }) => {
-  let whatsappMessage, campaignString;
+  let whatsappMessage, campaignString, contactNo, contactNoDisplay;
   switch (campaignId) {
     case "1":
       whatsappMessage = "Hi, I would like to avail your writing services.";
       campaignString = "Buying Intention";
       break;
     case "2":
-      whatsappMessage =
-        "Hi, I would like to learn more about your writing services.";
+      whatsappMessage = "Hi, I would like to learn more about your writing services.";
       campaignString = "Non-Buying Intention";
       break;
     case "3":
       whatsappMessage = "Hey! I would like to avail your writing services.";
       campaignString = "UAE Region";
+      break;
+    case "4":
+      whatsappMessage = "Hey! I would like to learn about your writing services.";
+      campaignString = "US Region";
+      contactNo = "16146265201";
+      contactNoDisplay = "+1-(614)-6265201";
       break;
 
     default:
@@ -171,12 +171,15 @@ const campaigns = ({ campaignId }) => {
   return {
     whatsappMessage: encodeURIComponent(whatsappMessage),
     campaignString,
+    contactNo: contactNo ?? "919949883658",
+    contactNoDisplay: contactNoDisplay ?? "+91-9949883658",
   };
 };
 
 const StudyAbroad = () => {
   const { query } = useRouter();
   const campaign = useMemo(() => campaigns({ campaignId: query?.c }), [query]);
+  const workflow = useMemo(() => workflows({ contactNoDisplay: campaign?.contactNoDisplay }), [query]);
 
   return (
     <LayoutWrapper
@@ -193,9 +196,8 @@ const StudyAbroad = () => {
           stats,
           featureList,
           campaign,
-          contactForm: (
-            <EducationDetails campaignString={campaign?.campaignString} />
-          ),
+          contactNo: campaign?.contactNo,
+          contactForm: <EducationDetails campaignString={campaign?.campaignString} />,
         }}
       />
     </LayoutWrapper>
