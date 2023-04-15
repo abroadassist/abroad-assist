@@ -179,7 +179,10 @@ const campaigns = ({ campaignId }) => {
 const StudyAbroad = () => {
   const { query } = useRouter();
   const campaign = useMemo(() => campaigns({ campaignId: query?.c }), [query]);
-  const workflow = useMemo(() => workflows({ contactNoDisplay: campaign?.contactNoDisplay }), [query]);
+  const workflow = useMemo(
+    () => workflows({ contactNoDisplay: campaign?.contactNoDisplay }),
+    [query, campaign?.contactNoDisplay],
+  );
 
   return (
     <LayoutWrapper
