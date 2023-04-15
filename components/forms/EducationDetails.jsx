@@ -72,7 +72,7 @@ const servicesOptions = [
   },
 ];
 
-const EducationDetails = ({ campaignString = "Organic" }) => {
+const EducationDetails = ({ campaignString = "Organic", sendToEmail = "writing@abroadassist.net" }) => {
   const [phoneNum, setPhoneNum] = useState();
 
   return (
@@ -88,7 +88,7 @@ const EducationDetails = ({ campaignString = "Organic" }) => {
           validationSchema: schema,
           onSubmit: async (values, actions) => {
             const response = await notify({
-              to: "writing@abroadassist.net",
+              to: sendToEmail,
               from: "new-lead@abroadassist.net",
               subject: `${values?.fullname} needs ${values?.services.join(", ")} (Writing Services: ${campaignString})`,
               content: mailString({

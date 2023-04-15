@@ -142,7 +142,7 @@ const featureList = [
 ];
 
 const campaigns = ({ campaignId }) => {
-  let whatsappMessage, campaignString, contactNo, contactNoDisplay;
+  let whatsappMessage, campaignString, contactNo, contactNoDisplay, sendToEmail;
   switch (campaignId) {
     case "1":
       whatsappMessage = "Hi, I would like to avail your writing services.";
@@ -161,6 +161,7 @@ const campaigns = ({ campaignId }) => {
       campaignString = "US Region";
       contactNo = "16146265201";
       contactNoDisplay = "+1-(614)-6265201";
+      sendToEmail = "contact@abroadassist.net";
       break;
 
     default:
@@ -173,6 +174,7 @@ const campaigns = ({ campaignId }) => {
     campaignString,
     contactNo: contactNo ?? "919949883658",
     contactNoDisplay: contactNoDisplay ?? "+91-9949883658",
+    sendToEmail: sendToEmail ?? "writing@abroadassist.net"
   };
 };
 
@@ -200,7 +202,7 @@ const StudyAbroad = () => {
           featureList,
           campaign,
           contactNo: campaign?.contactNo,
-          contactForm: <EducationDetails campaignString={campaign?.campaignString} />,
+          contactForm: <EducationDetails campaignString={campaign?.campaignString} sendToEmail={campaign?.sendToEmail} />,
         }}
       />
     </LayoutWrapper>
