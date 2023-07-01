@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Formik } from "formik";
+import { useSearchParams } from "next/navigation";
 import FormInputWrapper from "components/wrappers/FormInputWrapper";
 import * as Yup from "yup";
 import { FaPaperPlane } from "react-icons/fa";
@@ -73,17 +74,18 @@ const servicesOptions = [
 ];
 
 const EducationDetails = ({ campaignString = "Organic", sendToEmail = "writing@abroadassist.net" }) => {
-  const [phoneNum, setPhoneNum] = useState();
+  const searchParams = useSearchParams();
+  const [phoneNum, setPhoneNum] = useState(searchParams?.get("phone") ?? "");
 
   return (
     <>
       <Formik
         {...{
           initialValues: {
-            fullname: "",
-            email: "",
-            details: "",
-            services: [],
+            fullname: searchParams?.get("name") ?? "",
+            email: searchParams?.get("email") ?? "",
+            details: searchParams?.get("details") ?? "",
+            services: searchParams?.getAll("service") ?? [],
           },
           validationSchema: schema,
           onSubmit: async (values, actions) => {
@@ -110,7 +112,11 @@ const EducationDetails = ({ campaignString = "Organic", sendToEmail = "writing@a
         }}
       >
         {(formik) => {
-          const disableSubmit = phoneNum?.length < 7 || formik.isSubmitting || !formik.dirty || !formik.isValid;
+          const disableSubmit =
+            phoneNum?.length < 7 ||
+            formik.isSubmitting ||
+            (!formik.dirty && (!formik.values?.fullname || !formik.values?.email)) ||
+            !formik.isValid;
 
           return (
             <Form>
