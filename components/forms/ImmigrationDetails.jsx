@@ -86,7 +86,7 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
             const response = await notify({
               to: "writing@abroadassist.net",
               from: "new-lead@abroadassist.net",
-              subject: `${values?.fullname} needs ${values?.services.join(", ")} (VISA/Immigration: ${campaignString})`,
+              subject: `${values?.fullname} needs writing services (VISA/Immigration: ${campaignString})`,
               content: mailString({
                 campaign: `VISA/Immigration - ${campaignString}`,
                 name: values?.fullname ?? "",
