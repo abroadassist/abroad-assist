@@ -9,6 +9,7 @@ import emailIcon from "assets/icons/at-solid.svg";
 import whatsappIcon from "assets/icons/whatsapp.svg";
 import instagramIcon from "assets/icons/instagram.svg";
 import ContactForm from "components/forms/ContactForm";
+import { CONSTANTS } from "constants/constants";
 
 const contacts = [
   {
@@ -19,9 +20,9 @@ const contacts = [
   },
   {
     title: "Email",
-    link: "mailto:contact@abroadassist.net",
+    link: `mailto:${CONSTANTS.CONTACT}`,
     icon: emailIcon,
-    text: "contact@abroadassist.net",
+    text: CONSTANTS.CONTACT,
   },
   {
     title: "WhatsApp",

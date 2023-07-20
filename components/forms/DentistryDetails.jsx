@@ -10,6 +10,7 @@ import PhoneIntl from "./inputs/PhoneIntl";
 import Input from "./inputs/Input";
 import Textarea from "./inputs/Textarea";
 import Checkbox from "./inputs/Checkbox";
+import { CONSTANTS } from "constants/constants";
 
 const schema = Yup.object({
   fullname: Yup.string().required("Your name is required"),
@@ -88,8 +89,8 @@ const DentistryDetails = ({ campaignString = "Organic" }) => {
           validationSchema: schema,
           onSubmit: async (values, actions) => {
             const response = await notify({
-              to: "contact@abroadassist.net",
-              from: "new-lead@abroadassist.net",
+              to: CONSTANTS.CONTACT,
+              from: CONSTANTS.NEW_LEADS,
               subject: `${values?.fullname} needs ${values?.services.join(", ")} (Dentistry: ${campaignString})`,
               content: mailString({
                 campaign: `Dentistry - ${campaignString}`,

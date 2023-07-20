@@ -11,6 +11,7 @@ import PhoneIntl from "./inputs/PhoneIntl";
 import Input from "./inputs/Input";
 import Textarea from "./inputs/Textarea";
 import Checkbox from "./inputs/Checkbox";
+import { CONSTANTS } from "constants/constants";
 
 const schema = Yup.object({
   fullname: Yup.string().required("Your name is required"),
@@ -73,7 +74,7 @@ const servicesOptions = [
   },
 ];
 
-const EducationDetails = ({ campaignString = "Organic", sendToEmail = "writing@abroadassist.net" }) => {
+const EducationDetails = ({ campaignString = "Organic", sendToEmail = CONSTANTS.WRITING }) => {
   const searchParams = useSearchParams();
   const [phoneNum, setPhoneNum] = useState(searchParams?.get("phone") ?? "");
 
@@ -91,7 +92,7 @@ const EducationDetails = ({ campaignString = "Organic", sendToEmail = "writing@a
           onSubmit: async (values, actions) => {
             const response = await notify({
               to: sendToEmail,
-              from: "new-lead@abroadassist.net",
+              from: CONSTANTS.NEW_LEADS,
               subject: `${values?.fullname} needs ${values?.services.join(", ")} (Writing Services: ${campaignString})`,
               content: mailString({
                 campaign: `Writing Services - ${campaignString}`,

@@ -9,6 +9,7 @@ import { notify } from "api/notify";
 import PhoneIntl from "./inputs/PhoneIntl";
 import Input from "./inputs/Input";
 import Textarea from "./inputs/Textarea";
+import { CONSTANTS } from "constants/constants";
 
 const schema = Yup.object({
   fullname: Yup.string().required("Your name is required").nullable(),
@@ -22,18 +23,15 @@ const mailString = ({
   email,
   phone,
   details,
-  campaign,
   submissionDate,
-}) => `<p>A person has reached out through the Contact form. Find their details below!</p>
+}) => `<p>${name} is trying to reach you through the contact form. Find their details below!</p>
 <p><strong>Name</strong>: ${name}</p>
 <p><strong>Details</strong>: ${details}</p>
 <p><strong>Contact</strong>:</p>
 <p><a href="mailto:${email}" target="_blank" rel="noreferrer">${email}</a> | <a href="tel:${phone}" target="_blank" rel="noreferrer">+${phone}</a></p>
 <p><strong>Submission Date</strong>: ${submissionDate}</p>
 <p>&nbsp;</p>
-<p>Cheers!</p>
-<hr />
-<p><small>Lead generated through the campaign: <em>${campaign}</em></small></p>`;
+<p>Cheers!</p>`;
 
 const ContactForm = () => {
   const [phoneNum, setPhoneNum] = useState();
@@ -43,19 +41,18 @@ const ContactForm = () => {
       <Formik
         {...{
           initialValues: {
-            fullname: null,
-            phone: null,
-            email: null,
-            details: null,
+            fullname: "",
+            phone: "",
+            email: "",
+            details: "",
           },
           validationSchema: schema,
           onSubmit: async (values, actions) => {
             const response = await notify({
-              to: "contact@abroadassist.net",
-              from: "new-lead@abroadassist.net",
-              subject: `This is a test (please ignore) - ${values?.fullname}`,
+              to: CONSTANTS.CONTACT,
+              from: CONSTANTS.NEW_LEADS,
+              subject: `${values?.fullname} is trying to reach you`,
               content: mailString({
-                campaign: "TESTING",
                 name: values?.fullname ?? "",
                 email: values?.email ?? "",
                 phone: phoneNum,

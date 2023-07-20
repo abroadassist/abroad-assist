@@ -5,6 +5,7 @@ import LandingPage from "components/landing-page";
 import LayoutWrapper from "components/layout/LayoutWrapper";
 import { FaStar, FaUniversity } from "react-icons/fa";
 import { FiFileText } from "react-icons/fi";
+import { CONSTANTS } from "constants/constants";
 
 const paragraphs = [
   {
@@ -161,7 +162,7 @@ const campaigns = ({ campaignId }) => {
       campaignString = "US Region";
       contactNo = "16146265201";
       contactNoDisplay = "+1-(614)-6265201";
-      sendToEmail = "contact@abroadassist.net";
+      sendToEmail = CONSTANTS.CONTACT;
       break;
 
     default:
@@ -174,7 +175,7 @@ const campaigns = ({ campaignId }) => {
     campaignString,
     contactNo: contactNo ?? "919949883658",
     contactNoDisplay: contactNoDisplay ?? "+91-9949883658",
-    sendToEmail: sendToEmail ?? "writing@abroadassist.net"
+    sendToEmail: sendToEmail ?? CONSTANTS.WRITING,
   };
 };
 
@@ -202,7 +203,9 @@ const StudyAbroad = () => {
           featureList,
           campaign,
           contactNo: campaign?.contactNo,
-          contactForm: <EducationDetails campaignString={campaign?.campaignString} sendToEmail={campaign?.sendToEmail} />,
+          contactForm: (
+            <EducationDetails campaignString={campaign?.campaignString} sendToEmail={campaign?.sendToEmail} />
+          ),
         }}
       />
     </LayoutWrapper>
