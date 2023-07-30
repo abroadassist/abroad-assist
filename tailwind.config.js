@@ -19,8 +19,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Raleway"],
-        serif: ["Lora"],
+        heading: ["Inter", "sans-serif"],
+        subheading: ["Noto Serif Lao", "serif"],
+        body: ["Noto Sans", "sans-serif"],
+        jumbo_heading: ["Lora", "serif"],
       },
     },
   },
