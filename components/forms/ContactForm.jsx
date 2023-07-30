@@ -53,9 +53,9 @@ const ContactForm = () => {
             const response = await notify({
               to: "contact@abroadassist.net",
               from: "new-lead@abroadassist.net",
-              subject: `This is a test (please ignore) - ${values?.fullname}`,
+              subject: `${values?.fullname} is reaching out...`,
               content: mailString({
-                campaign: "TESTING",
+                campaign: "Contact",
                 name: values?.fullname ?? "",
                 email: values?.email ?? "",
                 phone: phoneNum,
