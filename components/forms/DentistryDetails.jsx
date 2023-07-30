@@ -73,7 +73,7 @@ const servicesOptions = [
 ];
 
 const DentistryDetails = ({ campaignString = "Organic" }) => {
-  const [phoneNum, setPhoneNum] = useState();
+  const [phoneNum, setPhoneNum] = useState("91");
 
   return (
     <>

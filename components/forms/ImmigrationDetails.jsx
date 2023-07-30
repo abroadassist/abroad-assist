@@ -70,7 +70,7 @@ const servicesOptions = [
 ];
 
 const ImmigrationDetails = ({ campaignString = "Organic" }) => {
-  const [phoneNum, setPhoneNum] = useState();
+  const [phoneNum, setPhoneNum] = useState("91");
 
   return (
     <>

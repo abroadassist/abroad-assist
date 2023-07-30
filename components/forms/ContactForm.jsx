@@ -36,7 +36,7 @@ const mailString = ({
 <p><small>Lead generated through the campaign: <em>${campaign}</em></small></p>`;
 
 const ContactForm = () => {
-  const [phoneNum, setPhoneNum] = useState();
+  const [phoneNum, setPhoneNum] = useState("91");
 
   return (
     <>

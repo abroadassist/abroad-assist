@@ -75,7 +75,7 @@ const servicesOptions = [
 
 const EducationDetails = ({ campaignString = "Organic", sendToEmail = "writing@abroadassist.net" }) => {
   const searchParams = useSearchParams();
-  const [phoneNum, setPhoneNum] = useState(searchParams?.get("phone") ?? "");
+  const [phoneNum, setPhoneNum] = useState(searchParams?.get("phone") ?? "91");
 
   return (
     <>
