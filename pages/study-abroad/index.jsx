@@ -174,7 +174,7 @@ const campaigns = ({ campaignId }) => {
     campaignString,
     contactNo: contactNo ?? "919949883658",
     contactNoDisplay: contactNoDisplay ?? "+91-9949883658",
-    sendToEmail: sendToEmail ?? "writing@abroadassist.net"
+    sendToEmail: sendToEmail ?? "writing@abroadassist.net",
   };
 };
 
@@ -189,7 +189,9 @@ const StudyAbroad = () => {
   return (
     <LayoutWrapper
       {...{
-        siteTitle: "Study Abroad with the Abroad Assist Edge! | Abroad Assist",
+        siteTitle: "Best SOP & LOR Writing Service in India | Abroad Assist",
+        siteDescription:
+          "Professional SOP, LOR, CV, and Essay Writing Services in India. 100% unique content written manually by our top-tier writers. Get in touch with us today!",
       }}
     >
       <LandingPage
@@ -202,7 +204,9 @@ const StudyAbroad = () => {
           featureList,
           campaign,
           contactNo: campaign?.contactNo,
-          contactForm: <EducationDetails campaignString={campaign?.campaignString} sendToEmail={campaign?.sendToEmail} />,
+          contactForm: (
+            <EducationDetails campaignString={campaign?.campaignString} sendToEmail={campaign?.sendToEmail} />
+          ),
         }}
       />
     </LayoutWrapper>

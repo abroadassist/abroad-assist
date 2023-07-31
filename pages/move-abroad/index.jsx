@@ -21,8 +21,7 @@ const featureCards = [
   {
     id: 1,
     title: "Plagiarism-Free Materials",
-    details:
-      "We provide 100% unique & plagiarism-free Visa SOP to improve your approval chances.",
+    details: "We provide 100% unique & plagiarism-free Visa SOP to improve your approval chances.",
     icon: <FiFileText className="mr-2" size={42} />,
   },
   {
@@ -35,8 +34,7 @@ const featureCards = [
   {
     id: 3,
     title: "Dedicated Customer Service",
-    details:
-      "We hear your needs and stay in touch throughout the entire process.",
+    details: "We hear your needs and stay in touch throughout the entire process.",
     icon: <FaHeadset className="mr-2" size={42} />,
   },
 ];
@@ -94,15 +92,13 @@ const workflow = [
     step: 4,
     icon: "",
     title: "Feedback",
-    description:
-      "Get on a call with us to discuss feedback and modifications to your material.",
+    description: "Get on a call with us to discuss feedback and modifications to your material.",
   },
   {
     step: 5,
     icon: "",
     title: "Get the Final Draft of your Write Up",
-    description:
-      "Receive your finalized version of 100% unique and plagiarism-free material.",
+    description: "Receive your finalized version of 100% unique and plagiarism-free material.",
   },
 ];
 
@@ -131,8 +127,7 @@ const featureList = [
   },
   {
     id: 2,
-    description:
-      "Demonstrated track record in writing effective LOEs & Visa SOPs for rejection cases.",
+    description: "Demonstrated track record in writing effective LOEs & Visa SOPs for rejection cases.",
   },
   {
     id: 3,
@@ -140,8 +135,7 @@ const featureList = [
   },
   {
     id: 4,
-    description:
-      "Writing standards in accordance with your test scores for maximum success.",
+    description: "Writing standards in accordance with your test scores for maximum success.",
   },
   {
     id: 5,
@@ -153,24 +147,20 @@ const campaigns = ({ campaignId }) => {
   let whatsappMessage, campaignString;
   switch (campaignId) {
     case "1":
-      whatsappMessage =
-        "Hi, I would like to learn more about your visa sop writing services.";
+      whatsappMessage = "Hi, I would like to learn more about your visa sop writing services.";
       campaignString = "Buying Intention";
       break;
     case "2":
-      whatsappMessage =
-        "Hi, I would like to learn more about your immigration writing services.";
+      whatsappMessage = "Hi, I would like to learn more about your immigration writing services.";
       campaignString = "Non-Buying Intention";
       break;
     case "3":
-      whatsappMessage =
-        "Hi, I would like to find out more about your visa sop writing services.";
+      whatsappMessage = "Hi, I would like to find out more about your visa sop writing services.";
       campaignString = "International";
       break;
 
     default:
-      whatsappMessage =
-        "Hi, I would like to know more about your writing services.";
+      whatsappMessage = "Hi, I would like to know more about your writing services.";
       campaignString = "Organic";
       break;
   }
@@ -187,7 +177,9 @@ const MoveAbroad = () => {
   return (
     <LayoutWrapper
       {...{
-        siteTitle: "Move Abroad with the Abroad Assist Edge! | Abroad Assist",
+        siteTitle: "Best Visa SOP Writing Service in India - Abroad Assist",
+        siteDescription:
+          "Professional SOP & Document writing services for Study Visa, Tourist Visa, and immigration purposes. Get in touch to boost your Visa acceptance rates!",
       }}
     >
       <LandingPage
@@ -199,9 +191,7 @@ const MoveAbroad = () => {
           stats,
           featureList,
           campaign,
-          contactForm: (
-            <ImmigrationDetails campaignString={campaign?.campaignString} />
-          ),
+          contactForm: <ImmigrationDetails campaignString={campaign?.campaignString} />,
         }}
       />
     </LayoutWrapper>
