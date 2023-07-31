@@ -15,11 +15,11 @@ const ImageSection = ({
     >
       <div className="flex-1 px-4">
         {!!sectionTitle && (
-          <h2 className="font-bold text-center lg:text-start text-4xl py-2 pb-8 text-slate-700 ">
+          <h2 className="font-bold text-center lg:text-start text-4xl py-2 pb-4 text-slate-700 ">
             {sectionTitle}
           </h2>
         )}
-        <div className="text-slate-500 md:px-10 lg:px-4">{children}</div>
+        <div className="text-slate-500 md:pr-10 lg:pr-4">{children}</div>
       </div>
       <div className="flex-1 p-5 mx-auto">
         <Image

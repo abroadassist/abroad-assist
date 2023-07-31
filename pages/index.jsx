@@ -82,7 +82,7 @@ const Home = () => {
       <TopBannerWrapper>
         <div className="flex flex-row">
           <div className="flex-auto md:w-64 py-5 px-8  md:pr-16 text-center md:text-start">
-            <h1 className="py-3 text-3xl md:text-4xl font-bold font-sans leading-relaxed">
+            <h1 className="py-3 text-3xl md:text-4xl font-bold font-jumbo_heading leading-relaxed">
               You got all what it takes to make it to your dream university.
             </h1>
             <h3 className="py-3 text-lg font-sans leading-6">
@@ -153,17 +153,17 @@ const Home = () => {
       {/* Services section - end */}
 
       {/* About Us section - start */}
-      <Container classes={`mb-12 py-10 px-8`}>
+      <Container classes={`mb-12 py-10 pr-8`}>
         <ImageSection
           {...{
             imageSrc: abroadImage,
             sectionTitle: "About Us",
           }}
         >
-          <p className="my-2">
+          <p className="my-2 font-body">
             Abroad Assist is a premier writing services agency providing expert help to abroad aspirants.
           </p>
-          <p className="my-2">
+          <p className="my-2 font-body">
             Led by a doctor-turned-health administration professional and an engineer-turned-writer working to fuel your
             abroad dreams, at the end of the day, our goal is not profiteering, but ensuring that you receive
             satisfactory work without having to shell out a fortune.
