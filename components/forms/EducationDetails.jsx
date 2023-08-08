@@ -11,6 +11,7 @@ import PhoneIntl from "./inputs/PhoneIntl";
 import Input from "./inputs/Input";
 import Textarea from "./inputs/Textarea";
 import Checkbox from "./inputs/Checkbox";
+import { gtagReportConversion } from "constants/helpers";
 
 const schema = Yup.object({
   fullname: Yup.string().required("Your name is required"),
@@ -73,7 +74,7 @@ const servicesOptions = [
   },
 ];
 
-const EducationDetails = ({ campaignString = "Organic", sendToEmail = "writing@abroadassist.net" }) => {
+const EducationDetails = ({ campaignString = "Organic", sendToEmail = "writing@abroadassist.net", gtag = "" }) => {
   const searchParams = useSearchParams();
   const [phoneNum, setPhoneNum] = useState(searchParams?.get("phone") ?? "91");
 
@@ -103,10 +104,11 @@ const EducationDetails = ({ campaignString = "Organic", sendToEmail = "writing@a
                 submissionDate: new Date().toLocaleString(),
               }),
             });
-            if (!!response?.status) {
+            if (response?.status) {
               actions.setSubmitting(false);
               actions.resetForm();
               setPhoneNum();
+              gtag && gtagReportConversion({ gtag });
             }
           },
         }}

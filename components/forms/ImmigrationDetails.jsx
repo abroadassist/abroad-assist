@@ -10,6 +10,7 @@ import PhoneIntl from "./inputs/PhoneIntl";
 import Input from "./inputs/Input";
 import Textarea from "./inputs/Textarea";
 import Checkbox from "./inputs/Checkbox";
+import { gtagReportConversion } from "constants/helpers";
 
 const schema = Yup.object({
   fullname: Yup.string().required("Your name is required"),
@@ -69,7 +70,7 @@ const servicesOptions = [
   },
 ];
 
-const ImmigrationDetails = ({ campaignString = "Organic" }) => {
+const ImmigrationDetails = ({ campaignString = "Organic", gtag = "" }) => {
   const [phoneNum, setPhoneNum] = useState("91");
 
   return (
@@ -96,10 +97,11 @@ const ImmigrationDetails = ({ campaignString = "Organic" }) => {
                 submissionDate: new Date().toLocaleString(),
               }),
             });
-            if (!!response?.status) {
+            if (response?.status) {
               actions.setSubmitting(false);
               actions.resetForm();
               setPhoneNum();
+              gtag && gtagReportConversion({ gtag });
             }
           },
         }}

@@ -185,6 +185,7 @@ const StudyAbroad = () => {
     () => workflows({ contactNoDisplay: campaign?.contactNoDisplay }),
     [query, campaign?.contactNoDisplay],
   );
+  const gtag = "AW-10967594529/9U11CN2D-M0YEKHs4O0o";
 
   return (
     <LayoutWrapper
@@ -192,6 +193,7 @@ const StudyAbroad = () => {
         siteTitle: "Best SOP & LOR Writing Service in India | Abroad Assist",
         siteDescription:
           "Professional SOP, LOR, CV, and Essay Writing Services in India. 100% unique content written manually by our top-tier writers. Get in touch with us today!",
+        gtag,
       }}
     >
       <LandingPage
@@ -205,7 +207,9 @@ const StudyAbroad = () => {
           campaign,
           contactNo: campaign?.contactNo,
           contactForm: (
-            <EducationDetails campaignString={campaign?.campaignString} sendToEmail={campaign?.sendToEmail} />
+            <EducationDetails
+              {...{ campaignString: campaign?.campaignString, sendToEmail: campaign?.sendToEmail, gtag }}
+            />
           ),
         }}
       />

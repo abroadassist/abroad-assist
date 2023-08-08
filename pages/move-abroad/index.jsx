@@ -173,6 +173,7 @@ const campaigns = ({ campaignId }) => {
 const MoveAbroad = () => {
   const { query } = useRouter();
   const campaign = useMemo(() => campaigns({ campaignId: query?.c }), [query]);
+  const gtag = "AW-10967594529/9U11CN2D-M0YEKHs4O0o";
 
   return (
     <LayoutWrapper
@@ -180,6 +181,7 @@ const MoveAbroad = () => {
         siteTitle: "Best Visa SOP Writing Service in India - Abroad Assist",
         siteDescription:
           "Professional SOP & Document writing services for Study Visa, Tourist Visa, and immigration purposes. Get in touch to boost your Visa acceptance rates!",
+        gtag,
       }}
     >
       <LandingPage
@@ -191,7 +193,7 @@ const MoveAbroad = () => {
           stats,
           featureList,
           campaign,
-          contactForm: <ImmigrationDetails campaignString={campaign?.campaignString} />,
+          contactForm: <ImmigrationDetails {...{ campaignString: campaign?.campaignString, gtag }} />,
         }}
       />
     </LayoutWrapper>
