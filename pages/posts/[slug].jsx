@@ -1,12 +1,15 @@
 import LayoutWrapper from "components/layout/LayoutWrapper";
 import PostTitle from "components/posts/PostTitle";
+import PostContainer from "components/wrappers/PostContainer";
 import fs from "fs";
 import matter from "gray-matter";
 import md from "markdown-it";
+import Image from "next/image";
 
 // The page for each post
 export default function Post({ frontmatter, content }) {
   const { title, author, category, date, bannerImage, tags } = frontmatter;
+  console.log("BI", { title, author, category, date, bannerImage, tags });
   return (
     <LayoutWrapper
       {...{
@@ -14,14 +17,31 @@ export default function Post({ frontmatter, content }) {
         siteDescription: author,
       }}
     >
-      <PostTitle {...{ title }} />
-      <h2>
-        {author} || {date}
-      </h2>
-      <h3>
-        {category} || {tags.join(", ")}
-      </h3>
-      <div className="post_content" dangerouslySetInnerHTML={{ __html: md().render(content) }} />
+      <PostContainer
+        {...{
+          classes: "px-4 ",
+        }}
+      >
+        <PostTitle {...{ title }} />
+        {/* <div className="">
+          <Image
+            alt="About Abroad Assist"
+            src={"https://abroadassist-assets.s3.ap-south-1.amazonaws.com/assets/filling-app.jpg"}
+            fill={true}
+            placeholder="empty"
+            className="rounded-lg"
+            style={{ objectFit: "contain" }}
+          />
+        </div> */}
+        <h2 className="uppercase font-semibold text-sm text-gray-500">Updated {new Date(date).toDateString()}</h2>
+        {/* <h3>
+          {category} || {tags.join(", ")}
+        </h3> */}
+        <div
+          className="post_content break-words overflow-x-clip"
+          dangerouslySetInnerHTML={{ __html: md().render(content) }}
+        />
+      </PostContainer>
     </LayoutWrapper>
   );
 }
