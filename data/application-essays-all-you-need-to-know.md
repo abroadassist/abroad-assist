@@ -1,5 +1,5 @@
 ---
-title: "Application Essays- All you need to know"
+title: "Application Essays - All you need to know"
 date: "2023-09-10"
 slug: application-essays-all-you-need-to-know
 summary: Application essays are usually a set of questions the applicant has to answer. This is then evaluated and dictates
