@@ -2,9 +2,6 @@
 title: "Application Essays - All you need to know"
 date: "2023-09-10"
 slug: application-essays-all-you-need-to-know
-summary: Application essays are usually a set of questions the applicant has to answer. This is then evaluated and dictates
-whether or not the applicant secures admission. Application essays are a common requirement and popular among several
-industries, ranging from STEM courses, business, medical and dental schools.
 categories:
   - Application Essays
 keywords:
@@ -34,7 +31,7 @@ prioritise authenticity.
 
 **Here is an example of general application essay questions:**
 
-_//insert image from doc//_
+![Example of general application essay questions](https://d1zehk3t3kkc0c.cloudfront.net/images/snip-application-essay-example.png "Example of general application essay questions")
 
 ## Why are they important?
 
@@ -81,6 +78,8 @@ learning process. Refrain from using unnecessary vocabulary and surpassing the w
 Ensure you have a meaningful answer and all the points are in continuity. The admissions committee dislikes irrelevant
 and verbose answers. Pick an ideal font size, leave a margin and proofread you document for grammar and spelling errors.
 Above all, ensure your response answers the question at hand.
+
+![Writing an application essay](https://d1zehk3t3kkc0c.cloudfront.net/images/filling-app.jpg "Writing an application essay")
 
 ## Conclusion
 
