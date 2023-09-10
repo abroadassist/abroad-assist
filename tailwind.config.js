@@ -23,6 +23,7 @@ module.exports = {
         subheading: ["Noto Serif Lao", "serif"],
         body: ["Noto Sans", "sans-serif"],
         jumbo_heading: ["Lora", "serif"],
+        blog_body: ["Roboto", "sans-serif"],
       },
     },
   },
