@@ -94,6 +94,7 @@
   .post_content h1 {
     @apply blog_heading;
     @apply text-3xl md:text-4xl lg:text-5xl;
+    line-height: 1.15 !important;
   }
 
   .post_content h2 {
@@ -155,5 +156,9 @@
 
   .post_content pre {
     @apply overflow-x-auto;
+  }
+
+  .post_content img {
+    @apply my-8 mx-auto;
   }
 }
